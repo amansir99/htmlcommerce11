@@ -1,0 +1,1813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Shop - Enterprise E-Commerce Solutions</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #1f2937;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Header */
+.header {
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: background 0.3s ease;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2563eb;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+}
+
+.nav-links li a {
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: #2563eb;
+}
+
+.nav-icons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.search-icon, .cart-icon {
+    cursor: pointer;
+    font-size: 1.2rem;
+    position: relative;
+    color: #6b7280;
+    transition: color 0.3s ease;
+}
+
+.search-icon:hover, .cart-icon:hover {
+    color: #2563eb;
+}
+
+.cart-count {
+    background: #2563eb;
+    color: white;
+    border-radius: 50%;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.8rem;
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    font-weight: 600;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    padding: 120px 2rem 2rem;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 600px;
+    z-index: 2;
+    padding-right: 2rem;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    animation: fadeInUp 1s ease;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.95;
+    animation: fadeInUp 1s ease 0.2s both;
+}
+
+.cta-button {
+    background: #ffffff;
+    color: #2563eb;
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeInUp 1s ease 0.4s both;
+    box-shadow: 0 4px 14px rgba(255,255,255,0.2);
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255,255,255,0.3);
+}
+
+.hero-slider {
+    flex: 1;
+    position: relative;
+    max-width: 800px;
+    height: 500px;
+    margin-left: 2rem;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(37, 99, 235, 0.8);
+    color: white;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.prev:hover, .next:hover {
+    background: #2563eb;
+}
+
+/* Promo Banner */
+.promo-banner {
+    background: linear-gradient(135deg, #1e40af 0%, #1d4ed8 100%);
+    color: white;
+    text-align: center;
+    padding: 5rem 2rem;
+    position: relative;
+}
+
+.banner-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.banner-content h2 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.banner-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+}
+
+.promo-timer {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    background: rgba(255,255,255,0.1);
+    padding: 1rem;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+}
+
+.banner-button {
+    background: #ffffff;
+    color: #1e40af;
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.banner-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255,255,255,0.2);
+}
+
+/* Sections General */
+section {
+    padding: 100px 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+section h2 {
+    text-align: center;
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #111827;
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #6b7280;
+    margin-bottom: 4rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* About Section */
+.about {
+    background: #f9fafb;
+    padding: 120px 2rem;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+}
+
+.about-text {
+    order: 1;
+}
+
+.about-text h2 {
+    text-align: left;
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    color: #374151;
+    margin-bottom: 2rem;
+}
+
+.about-image {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 20px;
+    order: 2;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.stat h3 {
+    font-size: 2.2rem;
+    color: #2563eb;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.stat p {
+    color: #6b7280;
+    font-size: 0.95rem;
+}
+
+/* Trust Signals */
+.trust-signals {
+    background: #ffffff;
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.signals-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.signal {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+.signals-container:hover .signal {
+    filter: grayscale(0);
+}
+
+.signals-container p {
+    font-weight: 500;
+    color: #374151;
+    max-width: 200px;
+}
+
+/* Products */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+
+.product-card {
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    border: 1px solid #f3f4f6;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+}
+
+.product-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 1.5rem;
+}
+
+.product-info h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #111827;
+}
+
+.product-info .price {
+    font-size: 1.4rem;
+    color: #059669;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.description {
+    color: #6b7280;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.add-to-cart {
+    width: 100%;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: white;
+    border: none;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.add-to-cart:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+}
+
+/* Categories */
+.categories {
+    background: #f9fafb;
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+}
+
+.category-card {
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+    text-align: center;
+    padding: 2rem;
+    border: 1px solid #f3f4f6;
+}
+
+.category-card:hover {
+    transform: translateY(-8px);
+}
+
+.category-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+}
+
+.category-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #111827;
+}
+
+.category-card p {
+    color: #6b7280;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Brands */
+.brands {
+    background: #ffffff;
+    padding: 80px 2rem;
+}
+
+.brands-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 3rem;
+    justify-items: center;
+}
+
+.brand-logo {
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.brand-logo:hover {
+    transform: scale(1.05);
+}
+
+.brand-logo img {
+    width: 120px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    filter: grayscale(50%);
+    transition: filter 0.3s ease;
+}
+
+.brand-logo:hover img {
+    filter: grayscale(0);
+}
+
+.brand-logo p {
+    font-weight: 500;
+    color: #374151;
+    font-size: 0.95rem;
+}
+
+/* Why Choose Us */
+.why-choose {
+    background: #f9fafb;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+}
+
+.feature {
+    text-align: center;
+    padding: 2.5rem;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+}
+
+.feature:hover {
+    transform: translateY(-5px);
+}
+
+.feature-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.feature h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #111827;
+}
+
+.feature p {
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+/* Best Sellers */
+.best-sellers {
+    background: #ffffff;
+}
+
+.sellers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.seller-item {
+    background: #f9fafb;
+    border-radius: 16px;
+    overflow: hidden;
+    text-align: center;
+    padding: 1.5rem;
+    border: 1px solid #e5e7eb;
+    transition: transform 0.3s ease;
+}
+
+.seller-item:hover {
+    transform: translateY(-5px);
+}
+
+.seller-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.seller-item h4 {
+    margin: 1rem 0 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #111827;
+}
+
+.seller-item p {
+    color: #059669;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+/* Testimonials */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+
+.testimonial {
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    text-align: center;
+    font-style: italic;
+    border: 1px solid #f3f4f6;
+}
+
+.testimonial p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    color: #374151;
+    line-height: 1.7;
+}
+
+.testimonial span {
+    font-weight: 600;
+    color: #111827;
+    display: block;
+    margin-bottom: 1.5rem;
+    font-style: normal;
+}
+
+.stars {
+    font-size: 1.3rem;
+    color: #fbbf24;
+}
+
+/* Blog */
+.blog {
+    background: #f9fafb;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+
+.blog-post {
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+    border: 1px solid #e5e7eb;
+}
+
+.blog-post:hover {
+    transform: translateY(-5px);
+}
+
+.blog-post img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.blog-post h3 {
+    padding: 1.5rem 1.5rem 1rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #111827;
+}
+
+.blog-post p {
+    padding: 0 1.5rem 1.5rem;
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+.read-more {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    margin: 0 1.5rem 1.5rem;
+    background: #2563eb;
+    color: white;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: background 0.3s ease;
+}
+
+.read-more:hover {
+    background: #1d4ed8;
+}
+
+/* FAQ */
+.faq {
+    background: #ffffff;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.faq-item {
+    background: #f9fafb;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+    border: 1px solid #e5e7eb;
+}
+
+.faq-item:hover {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.faq-item h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #111827;
+}
+
+.faq-item p {
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+/* Newsletter */
+.newsletter {
+    background: linear-gradient(135deg, #1e40af 0%, #1d4ed8 100%);
+    color: white;
+    text-align: center;
+    padding: 100px 2rem;
+}
+
+.newsletter h2 {
+    color: white;
+    margin-bottom: 1rem;
+    font-size: 2.8rem;
+}
+
+.newsletter p {
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.95;
+}
+
+.newsletter-form {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 500px;
+    margin: 0 auto 2rem;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    backdrop-filter: blur(10px);
+}
+
+.newsletter-form input::placeholder {
+    color: rgba(255,255,255,0.7);
+}
+
+.newsletter-form button {
+    background: #ffffff;
+    color: #1e40af;
+    border: none;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.newsletter-form button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px rgba(255,255,255,0.2);
+}
+
+.privacy-note {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.9rem;
+}
+
+.privacy-note a {
+    color: #fbbf24;
+    text-decoration: underline;
+}
+
+/* Contact */
+.contact {
+    background: #f9fafb;
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+}
+
+.contact-info h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #111827;
+}
+
+.contact-info p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: #374151;
+}
+
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.social-links a {
+    color: #2563eb;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #1d4ed8;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 1.2rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #ffffff;
+    transition: border-color 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.contact-form textarea {
+    resize: vertical;
+    font-family: inherit;
+}
+
+.contact-form button {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: white;
+    border: none;
+    padding: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+}
+
+/* Footer */
+.footer {
+    background: #111827;
+    color: #d1d5db;
+    padding: 5rem 2rem 1.5rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.footer-section h4 {
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.footer-section p {
+    color: #9ca3af;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-section ul li a {
+    color: #d1d5db;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: #2563eb;
+}
+
+.footer-social,
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.footer-social a,
+.social-links a {
+    color: #9ca3af;
+    transition: color 0.3s ease;
+}
+
+.footer-social a:hover,
+.social-links a:hover {
+    color: #2563eb;
+}
+
+.footer-newsletter {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.footer-newsletter input {
+    padding: 0.8rem;
+    border: 1px solid #374151;
+    border-radius: 6px;
+    background: #1f2937;
+    color: #d1d5db;
+    font-size: 0.95rem;
+}
+
+.footer-newsletter input::placeholder {
+    color: #9ca3af;
+}
+
+.footer-newsletter button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.footer-newsletter button:hover {
+    background: #1d4ed8;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 3rem;
+    border-top: 1px solid #374151;
+    margin-top: 3rem;
+    color: #9ca3af;
+    font-size: 0.9rem;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .nav-links {
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 120px 1rem 2rem;
+    }
+
+    .hero-content {
+        padding-right: 0;
+        max-width: 100%;
+    }
+
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+
+    .hero-slider {
+        margin-left: 0;
+        margin-top: 3rem;
+        height: 350px;
+    }
+
+    .about-content,
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .stats {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+        align-items: center;
+        max-width: 100%;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .signals-container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    section {
+        padding: 80px 1rem;
+    }
+
+    section h2 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+
+    .promo-banner,
+    .newsletter {
+        padding: 3rem 1rem;
+    }
+
+    .banner-content h2,
+    .newsletter h2 {
+        font-size: 2.2rem;
+    }
+
+    .products-grid,
+    .categories-grid,
+    .features-grid,
+    .sellers-grid,
+    .testimonials-grid,
+    .blog-grid,
+    .faq-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+</style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">E-Shop Enterprise</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#brands">Brands</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
+                <span class="search-icon">🔍</span>
+                <span class="cart-icon">🛒 <span class="cart-count">0</span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Enterprise-Grade E-Commerce Excellence</h1>
+            <p>Empower your business with our scalable, secure, and innovative online shopping platform. From global supply chains to personalized customer experiences, E-Shop delivers comprehensive solutions for modern enterprises. Discover premium products in electronics, fashion, home essentials, and beyond.</p>
+            <button class="cta-button">Discover Solutions</button>
+        </div>
+        <div class="hero-slider">
+            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Enterprise Tech Solutions" class="slide active">
+            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Premium Electronics" class="slide">
+            <img src="https://images.unsplash.com/photo-1524592094714-0f25c5025c4c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fashion Enterprise" class="slide">
+            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Home Enterprise Solutions" class="slide">
+            <button class="prev">❮</button>
+            <button class="next">❯</button>
+        </div>
+    </section>
+
+    <!-- Promo Banner -->
+    <section class="promo-banner">
+        <div class="banner-content">
+            <h2>Exclusive Enterprise Deals: Save Up to 50%</h2>
+            <p>Optimize your procurement with bulk discounts and customized pricing. Limited-time enterprise promotions on high-volume orders. Partner with us for seamless B2B integration.</p>
+            <div class="promo-timer"></div>
+            <button class="banner-button">Request Quote</button>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Leading the E-Commerce Revolution</h2>
+                <p>Founded in 2010, E-Shop Enterprise serves Fortune 500 companies and growing SMBs worldwide. Our platform powers over 1 million transactions daily, backed by AI-driven recommendations, robust analytics, and 24/7 enterprise support. We integrate with ERP systems, offer API access, and ensure compliance with global standards like GDPR and PCI-DSS.</p>
+                <p>Join thousands of businesses that trust us for their digital transformation. Whether you're scaling operations or entering new markets, our solutions adapt to your needs.</p>
+                <div class="stats">
+                    <div class="stat">
+                        <h3>500+</h3>
+                        <p>Enterprise Clients</p>
+                    </div>
+                    <div class="stat">
+                        <h3>1M+</h3>
+                        <p>Daily Transactions</p>
+                    </div>
+                    <div class="stat">
+                        <h3>99.9%</h3>
+                        <p>Uptime Guarantee</p>
+                    </div>
+                    <div class="stat">
+                        <h3>$10B+</h3>
+                        <p>Annual GMV</p>
+                    </div>
+                </div>
+            </div>
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Enterprise Headquarters" class="about-image">
+        </div>
+    </section>
+
+    <!-- Trust Signals -->
+    <section class="trust-signals">
+        <div class="signals-container">
+            <img src="https://images.unsplash.com/photo-1611230774819-4f4f496871a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Secure Payment" class="signal">
+            <p>Secure Payments & PCI Compliant</p>
+            <img src="https://images.unsplash.com/photo-1573164713988-f66b4f0ac1e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Global Shipping" class="signal">
+            <p>Global Logistics Partners</p>
+            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="AI Analytics" class="signal">
+            <p>AI-Powered Insights</p>
+            <img src="https://images.unsplash.com/photo-1558618047-3c1df4b8e61e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="24/7 Support" class="signal">
+            <p>Enterprise Support 24/7</p>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section id="products" class="products">
+        <h2>Curated Enterprise Products</h2>
+        <p class="section-subtitle">High-quality items sourced from trusted suppliers, optimized for bulk procurement and customization.</p>
+        <div class="products-grid">
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Enterprise Headphones">
+                <div class="product-info">
+                    <h3>Professional Wireless Headphones</h3>
+                    <p class="price">$99.99</p>
+                    <p class="description">Noise-canceling audio for executive meetings and remote teams. Bulk pricing available.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Smart Watch Enterprise">
+                <h3>Enterprise Smart Watch</h3>
+                <p class="price">$199.99</p>
+                <p class="description">Track productivity and health metrics with seamless API integration for HR systems.</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1524592094714-0f25c5025c4c?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Office Shirt">
+                <h3>Branded Office Shirts</h3>
+                <p class="price">$49.99</p>
+                <p class="description">Customizable uniforms for corporate teams. Minimum order: 50 units.</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Commercial Coffee Maker">
+                <h3>Commercial Coffee Maker</h3>
+                <p class="price">$299.99</p>
+                <p class="description">High-capacity brewer for office break rooms. Energy-efficient design.</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Corporate Footwear">
+                <h3>Corporate Running Shoes</h3>
+                <p class="price">$89.99</p>
+                <p class="description">Ergonomic footwear for wellness programs. Customize with company logo.</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Adjustable Stand">
+                <h3>Adjustable Laptop Stand</h3>
+                <p class="price">$59.99</p>
+                <p class="description">Ergonomic workstation accessory. Supports multiple device setups.</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Tablet Pro">
+                <h3>Enterprise Tablet Pro</h3>
+                <p class="price">$399.99</p>
+                <p class="description">Rugged tablet for field operations. Integrated with enterprise software.</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Reference Books">
+                <h3>Business Reference Books</h3>
+                <p class="price">$29.99</p>
+                <p class="description">Curated library for executive development. Bulk orders with free shipping.</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section id="categories" class="categories">
+        <h2>Enterprise Product Categories</h2>
+        <p class="section-subtitle">Tailored categories for B2B buyers, with API access for catalog integration.</p>
+        <div class="categories-grid">
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Electronics">
+                <h3>Electronics & Tech</h3>
+                <p>Devices, accessories, and software for digital workplaces.</p>
+            </div>
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Apparel">
+                <h3>Fashion & Apparel</h3>
+                <p>Uniforms, promotional wear, and office fashion solutions.</p>
+            </div>
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Office Supplies">
+                <h3>Home & Office</h3>
+                <p>Furniture, decor, and productivity tools for hybrid work.</p>
+            </div>
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Learning Resources">
+                <h3>Books & Learning</h3>
+                <p>Professional development and reference materials.</p>
+            </div>
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Wellness">
+                <h3>Health & Wellness</h3>
+                <p>Fitness gear and wellness programs for employee benefits.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands We Trust -->
+    <section id="brands" class="brands">
+        <h2>Brands We Trust</h2>
+        <p class="section-subtitle">Strategic partnerships with global leaders to ensure quality and reliability for your enterprise.</p>
+        <div class="brands-grid">
+            <div class="brand-logo">
+                <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Brand 1">
+                <p>Global Tech</p>
+            </div>
+            <div class="brand-logo">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Brand 2">
+                <p>Fashion Pro</p>
+            </div>
+            <div class="brand-logo">
+                <img src="https://images.unsplash.com/photo-1524592094714-0f25c5025c4c?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Brand 3">
+                <p>Home Essentials</p>
+            </div>
+            <div class="brand-logo">
+                <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Brand 4">
+                <p>Design Hub</p>
+            </div>
+            <div class="brand-logo">
+                <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Brand 5">
+                <p>Knowledge Corp</p>
+            </div>
+            <div class="brand-logo">
+                <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Brand 6">
+                <p>Wellness Inc</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose">
+        <h2>Why Enterprises Choose E-Shop</h2>
+        <p class="section-subtitle">Scalable infrastructure, expert support, and innovative features designed for business growth.</p>
+        <div class="features-grid">
+            <div class="feature">
+                <div class="feature-icon">🚀</div>
+                <h3>Scalable Solutions</h3>
+                <p>Handle high-volume traffic with cloud-based architecture. Seamless scaling for peak seasons.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🔒</div>
+                <h3>Advanced Security</h3>
+                <p>Enterprise-grade encryption, fraud detection, and compliance tools to protect your data.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📊</div>
+                <h3>Analytics & Insights</h3>
+                <p>Real-time dashboards and AI recommendations to drive informed procurement decisions.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🤝</div>
+                <h3>Custom Integration</h3>
+                <p>API-first approach for easy integration with your CRM, ERP, and supply chain systems.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🌍</div>
+                <h3>Global Reach</h3>
+                <p>Multi-language, multi-currency support with localized fulfillment networks worldwide.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🛠️</div>
+                <h3>Dedicated Team</h3>
+                <p>Account managers, developers, and support specialists exclusively for your enterprise needs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Sellers -->
+    <section class="best-sellers">
+        <h2>Top Enterprise Bestsellers</h2>
+        <p class="section-subtitle">Proven performers in bulk sales and high-demand categories.</p>
+        <div class="sellers-grid">
+            <div class="seller-item">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Bestseller 1">
+                <h4>Professional Headphones</h4>
+                <p>$99.99 - 5,200 units sold</p>
+            </div>
+            <div class="seller-item">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Bestseller 2">
+                <h4>Smart Watch Pro</h4>
+                <p>$199.99 - 4,100 units sold</p>
+            </div>
+            <div class="seller-item">
+                <img src="https://images.unsplash.com/photo-1524592094714-0f25c5025c4c?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Bestseller 3">
+                <h4>Office Shirts</h4>
+                <p>$49.99 - 8,500 units sold</p>
+            </div>
+            <div class="seller-item">
+                <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Bestseller 4">
+                <h4>Running Shoes Corp</h4>
+                <p>$89.99 - 3,800 units sold</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <h2>Enterprise Client Success Stories</h2>
+        <p class="section-subtitle">Hear from our partners on how E-Shop transformed their operations.</p>
+        <div class="testimonials-grid">
+            <div class="testimonial">
+                <p>"E-Shop's platform scaled our procurement from 100 to 10,000 orders daily without a hitch. Their integrations saved us months of development."</p>
+                <span>- CEO, TechCorp Inc.</span>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+            </div>
+            <div class="testimonial">
+                <p>"Custom branding and API access have made our B2B portal a success. Customer satisfaction scores up 40%."</p>
+                <span>- Operations Director, Fashion Global</span>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+            </div>
+            <div class="testimonial">
+                <p>"Reliable global shipping and analytics tools have optimized our supply chain. Highly recommend for enterprises."</p>
+                <span>- Procurement Manager, HomeWare Ltd.</span>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+            </div>
+            <div class="testimonial">
+                <p>"The dedicated support team resolved our complex integration issues overnight. True enterprise partnership."</p>
+                <span>- IT Director, BookHub Enterprises</span>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+            </div>
+            <div class="testimonial">
+                <p>"Bulk wellness products with custom pricing have boosted our employee benefits program. Seamless experience."</p>
+                <span>- HR Executive, WellnessCo</span>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Blog -->
+    <section id="blog" class="blog">
+        <h2>Insights & Trends</h2>
+        <p class="section-subtitle">Stay ahead with our thought leadership on e-commerce, supply chain, and digital transformation.</p>
+        <div class="blog-grid">
+            <div class="blog-post">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="AI in Procurement">
+                <h3>AI-Driven Procurement: The Future</h3>
+                <p>Explore how artificial intelligence is revolutionizing supply chain management for enterprises.</p>
+                <a href="#" class="read-more">Read More</a>
+            </div>
+            <div class="blog-post">
+                <img src="https://images.unsplash.com/photo-1558618047-3c1df4b8e61e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Sustainability E-Commerce">
+                <h3>Sustainable Sourcing in E-Commerce</h3>
+                <p>How to build eco-friendly supply chains while maintaining profitability.</p>
+                <a href="#" class="read-more">Read More</a>
+            </div>
+            <div class="blog-post">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Global Expansion">
+                <h3>Scaling Globally: Challenges & Solutions</h3>
+                <p>Strategies for enterprise e-commerce expansion into international markets.</p>
+                <a href="#" class="read-more">Read More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <h2>Frequently Asked Enterprise Questions</h2>
+        <p class="section-subtitle">Common inquiries from our business clients.</p>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <h3>What integration options do you offer?</h3>
+                <p>Full API access for ERP, CRM, and custom integrations. RESTful endpoints with documentation.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How do bulk pricing and custom orders work?</h3>
+                <p>Dedicated account managers handle volume discounts, customization, and private labeling.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What security measures are in place?</h3>
+                <p>PCI-DSS compliance, end-to-end encryption, regular audits, and enterprise SSO support.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Can we white-label the platform?</h3>
+                <p>Yes, our white-label solutions allow full branding customization for your B2B portal.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What about international compliance?</h3>
+                <p>GDPR, CCPA, and regional standards compliance. Multi-jurisdiction support available.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How is uptime and support guaranteed?</h3>
+                <p>99.9% SLA with redundant infrastructure. 24/7 enterprise support tier for critical issues.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <h2>Enterprise Insights Newsletter</h2>
+        <p>Subscribe for exclusive reports, case studies, and industry trends delivered to your inbox.</p>
+        <form class="newsletter-form">
+            <input type="email" placeholder="Enter your business email">
+            <button type="submit">Subscribe</button>
+        </form>
+        <p class="privacy-note">We respect your privacy. Unsubscribe at any time. See our <a href="#">Privacy Policy</a>.</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Contact Our Enterprise Team</h2>
+        <p class="section-subtitle">Ready to discuss solutions? Get in touch for a personalized demo or quote.</p>
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>Enterprise Inquiries</h3>
+                <p>Email: enterprise@eshop.com</p>
+                <p>Phone: +1 (800) 555-ENTERPRISE</p>
+                <p>Address: 456 Enterprise Blvd, Innovation City, CA 90210</p>
+                <div class="social-links">
+                    <a href="#">LinkedIn</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">YouTube</a>
+                </div>
+            </div>
+            <form class="contact-form">
+                <input type="text" placeholder="Company Name" required>
+                <input type="email" placeholder="Business Email" required>
+                <input type="text" placeholder="Phone Number" required>
+                <textarea placeholder="Tell us about your needs (e.g., integration requirements, volume estimates)" rows="6" required></textarea>
+                <button type="submit">Schedule Consultation</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>E-Shop Enterprise</h4>
+                <p>Empowering businesses with cutting-edge e-commerce solutions since 2010. Scalable, secure, and innovative.</p>
+                <div class="footer-social">
+                    <a href="#">LinkedIn</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">YouTube</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Products & Services</h4>
+                <ul>
+                    <li><a href="#products">Catalog API</a></li>
+                    <li><a href="#categories">Custom Categories</a></li>
+                    <li><a href="#brands">Partner Programs</a></li>
+                    <li><a href="#integration">API Integrations</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Enterprise Resources</h4>
+                <ul>
+                    <li><a href="#about">Case Studies</a></li>
+                    <li><a href="#blog">Blog & Insights</a></li>
+                    <li><a href="#faq">Enterprise FAQ</a></li>
+                    <li><a href="#whitepapers">Whitepapers</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#support">24/7 Helpdesk</a></li>
+                    <li><a href="#privacy">Privacy & Compliance</a></li>
+                    <li><a href="#terms">Terms of Service</a></li>
+                    <li><a href="#sla">SLA Details</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Newsletter Signup</h4>
+                <form class="footer-newsletter">
+                    <input type="email" placeholder="Business Email">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 E-Shop Enterprise. All rights reserved. ISO 27001 Certified | GDPR Compliant</p>
+        </div>
+    </footer>
+
+    <script >// Hero Slider Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === index);
+        });
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+
+    // Auto-slide every 5 seconds
+    setInterval(nextSlide, 5000);
+
+    // Initial slide
+    showSlide(currentSlide);
+});
+
+// Cart Functionality with localStorage
+let cartCount = parseInt(localStorage.getItem('cartCount')) || 0;
+
+function updateCartCount() {
+    const cartCounter = document.querySelector('.cart-count');
+    if (cartCounter) {
+        cartCounter.textContent = cartCount;
+        localStorage.setItem('cartCount', cartCount.toString());
+    }
+}
+
+document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', function() {
+        cartCount++;
+        updateCartCount();
+        this.textContent = 'Added!';
+        setTimeout(() => {
+            this.textContent = 'Add to Cart';
+        }, 2000);
+    });
+});
+
+// Update cart count on load
+updateCartCount();
+
+// CTA, Banner, and Read More Button Scrolling/Handling
+document.querySelectorAll('.cta-button, .banner-button, .read-more').forEach(button => {
+    button.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId && targetId.startsWith('#')) {
+            e.preventDefault();
+            const target = document.querySelector(targetId);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        } else if (this.classList.contains('read-more')) {
+            e.preventDefault();
+            alert('Redirecting to blog post... (In a real site, this would link to the full article.)');
+        } else {
+            document.querySelector('#products')?.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+});
+
+// Smooth Scrolling for Nav Links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const target = document.querySelector(targetId);
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Newsletter and Footer Newsletter Form Submission
+document.querySelectorAll('.newsletter-form').forEach(form => {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = this.querySelector('input[type="email"]').value;
+        if (email) {
+            alert('Thank you for subscribing to enterprise insights! You will receive updates at ' + email);
+            this.reset();
+        } else {
+            alert('Please enter a valid business email address.');
+        }
+    });
+});
+
+// Contact Form Submission
+const contactForm = document.querySelector('.contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = this.querySelector('input[placeholder="Company Name"]').value || this.querySelector('input[type="text"]').value;
+        const email = this.querySelector('input[type="email"]').value;
+        const phone = this.querySelector('input[placeholder="Phone Number"]').value;
+        const message = this.querySelector('textarea').value;
+        if (name && email && message) {
+            alert('Thank you, ' + name + '! Your enterprise consultation request has been sent. We will contact you within 24 hours.');
+            this.reset();
+        } else {
+            alert('Please fill in all fields for your consultation request.');
+        }
+    });
+}
+
+// Search Icon Toggle
+document.querySelector('.search-icon')?.addEventListener('click', function() {
+    const searchInput = prompt('Enter search term (e.g., "enterprise API integration"):');
+    if (searchInput) {
+        alert('Searching enterprise catalog for: ' + searchInput);
+        // In a real app, this would trigger a search function
+    }
+});
+
+// Header Background Change on Scroll
+window.addEventListener('scroll', function() {
+    const header = document.querySelector('.header');
+    if (window.scrollY > 100) {
+        header.style.background = 'rgba(255, 255, 255, 0.98)';
+        header.style.backdropFilter = 'blur(20px)';
+        header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.12)';
+    } else {
+        header.style.background = '#ffffff';
+        header.style.backdropFilter = 'none';
+        header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.08)';
+    }
+});
+
+// FAQ Accordion
+document.querySelectorAll('.faq-item h3').forEach(header => {
+    header.addEventListener('click', function() {
+        const content = this.nextElementSibling;
+        const isOpen = content.style.display === 'block';
+        // Close all others
+        document.querySelectorAll('.faq-item p').forEach(p => {
+            p.style.display = 'none';
+        });
+        // Toggle current
+        if (content) {
+            content.style.display = isOpen ? 'none' : 'block';
+            content.style.marginTop = '1rem';
+        }
+    });
+});
+
+// Initialize FAQ (hide all by default)
+document.querySelectorAll('.faq-item p').forEach(p => {
+    p.style.display = 'none';
+});
+
+// Intersection Observer for Animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, observerOptions);
+
+// Observe all enhanced elements for fade-in effect
+document.querySelectorAll('.product-card, .category-card, .feature, .seller-item, .testimonial, .faq-item, .about-text, .about-image, .blog-post, .brand-logo, .signal').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+    observer.observe(el);
+});
+
+// Promo Timer (Simple countdown example - 24 hours from now)
+function updatePromoTimer() {
+    const now = new Date();
+    const end = new Date(now.getTime() + 24 * 60 * 60 * 1000); // 24 hours
+    const diff = end - now;
+    if (diff > 0) {
+        const hours = Math.floor(diff / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        
+        const timerEl = document.querySelector('.promo-timer');
+        if (timerEl) {
+            timerEl.innerHTML = `Offer ends in: ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+        setTimeout(updatePromoTimer, 1000);
+    } else {
+        const timerEl = document.querySelector('.promo-timer');
+        if (timerEl) timerEl.textContent = 'Offer Ended';
+    }
+}
+
+updatePromoTimer();
+</script>
+</body>
+</html>
